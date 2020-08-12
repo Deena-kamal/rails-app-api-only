@@ -12,14 +12,15 @@ class TodosController < ApplicationController
     end
 
     def index
-        @todos = Todo.all
+        @todos = current_user.todos
+        # to retreive all names for the fisrt todo
+        # @todos = current_user.todos.first().items.pluck :name
         json_response(@todos)
     end
 
     def create
-        # using create! instead of create -> will raise an exception record invalid which will be catched in exception handler
-        @todo = Todo.create!(todo_params)
-        json_response(@todo, :created)
+            @todo = current_user.todos.create!(todo_params)
+            json_response(@todo, :created)
     end
 
     def update
@@ -37,7 +38,7 @@ class TodosController < ApplicationController
     private 
         def todo_params
             # whitelist params
-            params.permit(:title, :created_by)
+            params.permit(:title)
         end
     
         def set_todo
