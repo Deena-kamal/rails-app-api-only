@@ -12,7 +12,7 @@ class TodosController < ApplicationController
     end
 
     def index
-        @todos = current_user.todos
+        @todos = current_user.todos.paginate(page: params[:page], per_page: 20)
         # to retreive all names for the fisrt todo
         # @todos = current_user.todos.first().items.pluck :name
         json_response(@todos)
