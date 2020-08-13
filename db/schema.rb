@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_094129) do
+ActiveRecord::Schema.define(version: 2020_08_13_102400) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 2020_08_12_094129) do
 
   create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
-    t.string "created_by"
+    t.bigint "created_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_by"], name: "fk_rails_6851288ea5"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -37,4 +38,5 @@ ActiveRecord::Schema.define(version: 2020_08_12_094129) do
   end
 
   add_foreign_key "items", "todos"
+  add_foreign_key "todos", "users", column: "created_by"
 end
