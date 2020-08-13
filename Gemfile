@@ -51,3 +51,4 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'faker'
 gem 'rails-i18n'
 gem "pundit"
+gem 'paper_trail'

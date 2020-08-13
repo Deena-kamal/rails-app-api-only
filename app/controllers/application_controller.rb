@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
 
     # called before every action on controllers
     before_action :authorize_request
+    before_action :set_paper_trail_whodunnit
 
     # un comment this to ensure that you have added authorize to all actions, also we can specify which methods to be excluded or included
     # after_action :verify_authorized, except: :index
