@@ -13,12 +13,4 @@ class AuthenticationController < ApplicationController
       def auth_params
         params.permit(:email, :password)
       end
-
-      def test_here
-        puts "7"
-      end
-      
-      def test_method
-        puts "test"
-      end
   end
