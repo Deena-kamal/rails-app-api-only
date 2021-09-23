@@ -19,6 +19,6 @@ class AuthenticationController < ApplicationController
       end
       
       def test_method
-        puts "test"
+        puts "test 11"
       end
   end
